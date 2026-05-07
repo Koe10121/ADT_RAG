@@ -3,3 +3,4 @@ __pycache__/
 .gradio/
 .codex
 *.pyc
+.streamlit/secrets.toml
