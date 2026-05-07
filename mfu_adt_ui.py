@@ -206,13 +206,24 @@ def chat(message, history):
 # ----------------------------------------------------------------
 # 3. GRADIO CHAT INTERFACE
 # ----------------------------------------------------------------
-with gr.Blocks(title="MFU ADT Program Guide") as demo:
+with gr.Blocks(title="BDA_Project2_Group8") as demo:
 
     gr.Markdown(
         """
-        # MFU ADT Program Guide
-        ### Ask about programs from the School of Applied Digital Technology
-        Compare degree options, admission details, curriculum, study plans, and career paths from the provided program documents.
+        # BDA_Project2_Group8
+        ## MFU ADT Program Guide — RAG Chatbot
+        ### School of Applied Digital Technology · Mae Fah Luang University
+
+        **Group 8 Members:**
+        | Student ID | Student Name |
+        |---|---|
+        | 6631501152 | Nattapat Ismael |
+        | 6631501124 | Athinan Singkaew |
+        | 6631501185 | JAYVERT DALE ANCHETA |
+        | 6631501132 | Htet Lin Aung |
+        | 6631501139 | Sai Myat Thura Koe |
+
+        Ask about degree programs, admission requirements, curriculum, study plans, and career paths.
         """
     )
 
