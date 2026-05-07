@@ -1,3 +1,14 @@
+---
+title: BDA Project2 Group8
+emoji: 🎓
+colorFrom: blue
+colorTo: green
+sdk: streamlit
+sdk_version: 1.45.0
+app_file: streamlit_app.py
+pinned: false
+---
+
 # MFU ADT Program Guide — RAG Chatbot
 
 A Retrieval-Augmented Generation (RAG) chatbot that answers questions about programs from the **School of Applied Digital Technology (ADT)** at Mae Fah Luang University.
