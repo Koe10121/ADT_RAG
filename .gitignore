@@ -4,3 +4,5 @@ __pycache__/
 .codex
 *.pyc
 .streamlit/secrets.toml
+*.log
+run_gradio_local.py

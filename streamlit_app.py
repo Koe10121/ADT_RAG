@@ -16,9 +16,15 @@ import time
 import requests
 import streamlit as st
 from pathlib import Path
+from dotenv import load_dotenv
 from langchain_community.vectorstores import FAISS
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader
+
+os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
+os.environ.setdefault("OMP_NUM_THREADS", "1")
+os.environ.setdefault("MKL_NUM_THREADS", "1")
+load_dotenv()
 
 try:
     from langchain_huggingface import HuggingFaceEmbeddings
