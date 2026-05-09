@@ -211,11 +211,26 @@ retriever = build_rag_pipeline()
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# Handle example button click
-if "pending_question" in st.session_state:
-    st.session_state.messages.append(
-        {"role": "user", "content": st.session_state.pop("pending_question")}
-    )
+def generate_answer(prompt: str) -> str:
+    try:
+        source_docs = retriever.invoke(prompt)
+        answer = call_thaillm(prompt, source_docs)
+        if source_docs:
+            answer += "\n\n---\n**Sources:**\n"
+            for i, doc in enumerate(source_docs, 1):
+                title = doc.metadata.get("title") or f"Source {i}"
+                snippet = doc.page_content[:100].strip().replace("\n", " ")
+                answer += f"- [{i}] {title}: {snippet}...\n"
+        return answer
+    except Exception as err:
+        return (
+            f"âŒ Request failed: {err}\n\n"
+            "Check your API credentials in Streamlit Secrets."
+        )
+
+pending_prompt = st.session_state.pop("pending_question", None)
+typed_prompt = st.chat_input("Ask about ADT programs at MFU...")
+prompt = pending_prompt or typed_prompt
 
 # Render chat history
 for msg in st.session_state.messages:
@@ -225,7 +240,7 @@ for msg in st.session_state.messages:
 # ----------------------------------------------------------------
 # CHAT INPUT
 # ----------------------------------------------------------------
-if prompt := st.chat_input("Ask about ADT programs at MFU..."):
+if prompt:
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
